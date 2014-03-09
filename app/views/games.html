@@ -1,0 +1,17 @@
+<form ng-submit="submitGame()">
+  <input type="text" ng-model="game.home" />
+  <input type="text" ng-model="game.away" />
+  <input type="text" ng-model="game.prop" />
+  <input type="submit" value="Create Game" />
+</form>
+
+<div ng-repeat="(gameId, game) in games">
+  <strong>{{ game.home }}</strong>
+  <span class="vs">vs</span>
+  <strong>{{ game.away }} </strong>
+  <span class="prop">{{ game.prop }}</span>
+  <button type="button" class="btn btn-danger" ng-click="deleteGame(gameId)">Delete Game</button>
+</div>
+
+Games: {{ games }}
+Game: {{ game }}
