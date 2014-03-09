@@ -1,19 +1,19 @@
 'use strict';
 
-app.controller('GamesCtrl', function ($scope, Game) {
-  $scope.games = Game.get();
+app.controller('GamesCtrl', function ($scope, Game, NBA) {
+  $scope.games = Game.all;
+
   $scope.game = {home: 'Home Team', away: 'Away Team', prop: 'Prop goes here'};
 
+  $scope.nbateams = NBA.teams;
+
   $scope.submitGame = function() {
-    Game.save($scope.game, function(ref) {
-      $scope.games[ref.name] = $scope.game;
+    Game.create($scope.game).then(function () {
       $scope.game = {home: 'Home Team', away: 'Away Team', prop: 'Prop goes here'};
     });
   };
 
   $scope.deleteGame = function (gameId) {
-    Game.delete({id: gameId}, function() {
-      delete $scope.games[gameId];
-    });
+    Game.delete(gameId);
   };
 });

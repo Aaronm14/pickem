@@ -13,6 +13,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/games.html',
       controller: 'GamesCtrl'
     })
+    .when('/games/:gameId', {
+      templateUrl: 'views/showgame.html',
+      controller: 'GameViewCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

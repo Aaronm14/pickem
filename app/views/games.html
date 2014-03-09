@@ -1,17 +1,28 @@
 <form ng-submit="submitGame()">
-  <input type="text" ng-model="game.home" />
-  <input type="text" ng-model="game.away" />
+  <select class="nba-dropdown" ng-model="game.home">
+    <option ng-repeat="nbateam in nbateams" value="{{ nbateam.first_name }} {{ nbateam.last_name }}">
+      {{ nbateam.first_name }} {{ nbateam.last_name }}
+    </option>
+  </select>
+  <select class="nba-dropdown" ng-model="game.away">
+    <option ng-repeat="nbateam in nbateams" value="{{ nbateam.first_name }} {{ nbateam.last_name }}">
+      {{ nbateam.first_name }} {{ nbateam.last_name }}
+    </option>
+  </select>
   <input type="text" ng-model="game.prop" />
+
   <input type="submit" value="Create Game" />
 </form>
 
 <div ng-repeat="(gameId, game) in games">
+  <a href="#/games/{{ gameId }}">View Game</a>
   <strong>{{ game.home }}</strong>
   <span class="vs">vs</span>
   <strong>{{ game.away }} </strong>
   <span class="prop">{{ game.prop }}</span>
   <button type="button" class="btn btn-danger" ng-click="deleteGame(gameId)">Delete Game</button>
 </div>
-
-Games: {{ games }}
-Game: {{ game }}
+<br><hr><br>
+<div style="padding:5px; border-bottom:1px solid #ddd; background:#{{nbateam.color3}};" ng-repeat="nbateam in nbateams">
+  <h1 ng-click="hometeam = nbateam.first_name"><span style="color:#{{nbateam.color1}}">{{nbateam.first_name}}</span> <span style="color:#{{nbateam.color2}}">{{ nbateam.last_name }}</span><span style="color:#{{ nbateam.color4 }}">{{ nbateam.abbreviation }}</span></h1>{{hometeam}}
+</div>
