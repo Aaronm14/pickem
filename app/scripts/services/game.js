@@ -16,7 +16,18 @@ app.factory('Game',
     },
     delete: function(gameId) {
       return games.$remove(gameId);
-    }
+    },
+
+    addProp: function(gameId, prop) {
+      prop.gameId = gameId;
+
+      games.$child(gameId).$child('props').$add(prop);
+    },
+    deleteProp: function(game, prop, propId) {
+      game.$child('props').$remove(propId);
+    },
+
+    // addPropOption: function()
   };
 
   return Game;

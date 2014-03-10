@@ -2,8 +2,17 @@
   <strong>{{ game.home }}</strong>
   <span class="vs">vs</span>
   <strong>{{ game.away }} </strong>
-  <span class="prop">{{ game.prop }}</span><!--
+  <div ng-repeat="(propId, prop) in game.props">
+    <span>{{ prop.text }}</span>
+    <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
+</form>
+  </div><!--
   <button type="button" class="btn btn-danger" ng-click="deleteGame(gameId)">Delete Game</button> -->
 </div>
+
+<form ng-submit="addProp()">
+  <textarea ng-model="prop.text" placeholder="Enter Prop Here" class="form-control"></textarea>
+  <input type="submit" value="Prop Text" class="btn btn-primary" />
+
 
 <a href="#/games">Back to Games</a>
