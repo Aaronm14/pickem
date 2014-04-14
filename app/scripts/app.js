@@ -17,10 +17,6 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/showgame.html',
       controller: 'GameViewCtrl'
     })
-    // .when('/props/:propId', {
-    //   templateUrl: 'views/showprop.html',
-    //   controllers: 'PropViewCtrl'
-    // })
     .otherwise({
       redirectTo: '/'
     });
