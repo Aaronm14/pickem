@@ -4,12 +4,26 @@
   <strong>{{ game.away }} </strong>
   <div ng-repeat="(propId, prop) in game.props">
     <hr>
-    <strong>Question: {{ prop.question }}</strong><br>
-    <span>Option1: {{ prop.option1 }}</span> <span>Option2: {{ prop.option2 }}</span><br>
-    <span>Result: {{ prop.result }}</span><br>
-    <a href="#/games/{{ prop.gameId }}/props/{{ propId }}">View Prop</a>
-    <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
-</form>
+    <div ng-hide="editEnabled">
+      <strong>Question: {{ prop.question }}</strong><br>
+      <span>Option1: {{ prop.option1 }}</span> <span>Option2: {{ prop.option2 }}</span><br>
+      <span>Result: {{ prop.result }}</span><br>
+      <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
+      <button ng-click="enableEdit()" type="button" class="btn btn-warning">Edit</button>
+    </div>
+    <div ng-show="editEnabled">
+      <strong>Question: </strong>
+      <input ng-model="prop.question" placeholder="{{ prop.question }}" class="form-control" /><br>
+      <span>Option1: {{ prop.option1 }}</span>
+      <input ng-model="prop.option1" placeholder="{{ prop.option1 }}" class="form-control" />
+      <span>Option2: {{ prop.option2 }}</span>
+      <input ng-model="prop.option2" placeholder="{{ prop.option2 }}" class="form-control" /><br>
+      <span>Result: {{ prop.result }}</span>
+      <input ng-model="prop.result" placeholder="{{ prop.result }}" class="form-control" /><br>
+      <button ng-click="saveProp(game, prop, propId)" type="button" class="btn btn-primary">Finish</button>
+      <button ng-click="disableEdit()" type="button" value="Cancel" class="btn btn-warning">Cancel</button>
+      <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
+    </div>
   </div><!--
   <button type="button" class="btn btn-danger" ng-click="deleteGame(gameId)">Delete Game</button> -->
 </div>
@@ -20,6 +34,6 @@
   <input ng-model="prop.option2" placeholder="Enter Option2 Here" class="form-control" />
   <input ng-model="prop.result" placeholder="Enter Result Here" class="form-control" />
   <input type="submit" value="Add Prop" class="btn btn-primary" />
-
+</form>
 
 <a href="#/games">Back to Games</a>

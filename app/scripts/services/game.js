@@ -20,14 +20,14 @@ app.factory('Game',
 
     addProp: function(gameId, prop) {
       prop.gameId = gameId;
-
       games.$child(gameId).$child('props').$add(prop);
     },
     deleteProp: function(game, prop, propId) {
       game.$child('props').$remove(propId);
     },
-
-    // addPropOption: function()
+    saveProp: function(game, prop, propId, propRef) {
+      $firebase(propRef).$update(prop);
+    }
   };
 
   return Game;
