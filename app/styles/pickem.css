@@ -60,3 +60,13 @@ select {
   right:30px;
   width:50px;
 }
+.sub-nav {
+  padding: 10px 15px;
+  background: #384659;
+  border-top: 2px solid #26354A;
+  border-bottom: 2px solid #26354A;
+  text-align: center;
+  margin-bottom: 15px;
+  color:#fff;
+  font-size:1.5em;
+}

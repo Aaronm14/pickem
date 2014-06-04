@@ -1,15 +1,24 @@
 <div>
-  <strong>{{ game.home }}</strong>
-  <span class="vs">vs</span>
-  <strong>{{ game.away }} </strong>
-  <div ng-repeat="(propId, prop) in game.props">
-    <hr>
-    <div ng-hide="editEnabled">
-      <strong>Question: {{ prop.question }}</strong><br>
-      <span>Option1: {{ prop.option1 }}</span> <span>Option2: {{ prop.option2 }}</span><br>
-      <span>Result: {{ prop.result }}</span><br>
-      <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
-      <button ng-click="enableEdit()" type="button" class="btn btn-warning">Edit</button>
+  <div class="sub-nav">
+    <strong>{{ game.home }}</strong>
+    <span class="vs">vs</span>
+    <strong>{{ game.away }} </strong>
+  </div>
+  <div class="clearfix"></div>
+  <div ng-repeat="(propId, prop) in game.props" class="col-md-4 col-sm-6 col-xs-12">
+    <div ng-hide="editEnabled" class="game-card">
+      <div class="game-card-header">
+        <strong>Question: {{ prop.question }}</strong>
+      </div>
+      <div class="game-card-info">
+        <span>Option1: {{ prop.option1 }}</span>
+        <br><span>Option2: {{ prop.option2 }}</span>
+        <br><span>Result: {{ prop.result }}</span>
+      </div>
+      <div class="game-card-actions">
+        <button ng-click="deleteProp(game,propId)" type="button" class="btn btn-danger">Delete Prop</button>
+        <button ng-click="enableEdit()" type="button" class="btn btn-warning">Edit</button>
+      </div>
     </div>
     <div ng-show="editEnabled">
       <strong>Question: </strong>
