@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('NBA', function () {
+app.factory('Nba', function () {
   var NBA = {};
   NBA.teams = [
     {'team_id':'atlanta-hawks','abbreviation':'ATL','active':true,'first_name':'Atlanta','last_name':'Hawks','conference':'East','division':'Southeast','site_name':'Philips Arena','city':'Atlanta','state':'Georgia','full_name':'Atlanta Hawks','color1':'000080','color2':'FF0000','color3':'C0C0C0'},

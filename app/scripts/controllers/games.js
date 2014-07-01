@@ -1,11 +1,11 @@
 'use strict';
 
-app.controller('GamesCtrl', function ($scope, Game, NBA) {
+app.controller('GamesCtrl', function ($scope, Game, Nba) {
   $scope.games = Game.all;
 
   $scope.game = {home: 'Home Team', away: 'Away Team'};
 
-  $scope.nbateams = NBA.teams;
+  $scope.nbateams = Nba.teams;
 
   $scope.submitGame = function() {
     Game.create($scope.game).then(function () {
